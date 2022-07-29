@@ -62,7 +62,7 @@ class MwatchData( DataBase ):
         df.replace('\(', '-', regex = True, inplace = True)
         df.replace('\)', '', regex = True, inplace = True)
         # rename duplicate columns
-        columns = pd.io.parsers.ParserBase({'names':df.columns})._maybe_dedup_names(df.columns)
+        columns = pd.io.parsers.base_parser.ParserBase({'names':df.columns})._maybe_dedup_names(df.columns)
         df.columns = [ str(col).replace('\xa0', ' ') for col in columns ]
         df = df.astype('str')
         '''for col in df.columns:
